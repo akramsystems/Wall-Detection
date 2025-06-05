@@ -1,0 +1,43 @@
+# Core ML dependencies
+torch==2.0.1
+torchvision==0.15.2
+numpy==1.24.3
+scipy==1.10.1
+scikit-image==0.20.0
+matplotlib==3.7.1
+Pillow==9.5.0
+
+# Data handling
+pandas==2.0.3
+h5py==3.9.0
+lmdb==1.4.1
+networkx==3.1
+
+# Image processing
+opencv-python==4.8.0.74
+PyWavelets==1.4.1
+
+# Utilities
+tqdm==4.65.0
+Cython==0.29.35
+
+# Geometric processing
+Shapely==2.0.1
+svgpathtools==1.6.1
+svgwrite==1.4.3
+
+# API dependencies
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+pydantic==2.4.2
+
+# Cloud storage
+azure-storage-blob==12.19.0
+google-cloud-storage==2.10.0
+
+# HTTP client
+aiohttp==3.9.0
+requests==2.31.0
+
+# Other utilities
+python-dateutil==2.8.2 

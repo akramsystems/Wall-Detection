@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  wall-detection-api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      # Azure Storage (uncomment and fill in your credentials)
+      # - AZURE_STORAGE_ACCOUNT_NAME=your_storage_account
+      # - AZURE_STORAGE_ACCOUNT_KEY=your_storage_key
+      # - AZURE_CONTAINER_NAME=images
+      
+      # GCP Storage (uncomment and fill in your credentials)
+      # - GCP_BUCKET_NAME=your_bucket_name
+      # - GOOGLE_APPLICATION_CREDENTIALS=/app/gcp-credentials.json
+      
+      - PYTHONUNBUFFERED=1
+    volumes:
+      # Mount GCP credentials if using GCP (uncomment if needed)
+      # - ./path/to/your/gcp-credentials.json:/app/gcp-credentials.json:ro
+      
+      # Mount model file if you want to update it without rebuilding
+      - ./pkl_file:/app/pkl_file:ro
+      
+      # Mount logs directory
+      - ./logs:/app/logs
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s 
